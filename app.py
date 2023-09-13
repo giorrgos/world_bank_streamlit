@@ -7,6 +7,8 @@ A siple streamlit app fetching world bank data
 """
 
 import streamlit as st
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 # import custom functions
 from functions.wb_lib import fetch_world_bank_data, process_data
@@ -33,4 +35,5 @@ if st.button('Fetch Data'):
     else:
         processed_data = process_data(raw_data[1])
         st.write(processed_data)
-
+        sns.lineplot(data=processed_data, x='date', y='value')
+        st.pyplot(plt)
